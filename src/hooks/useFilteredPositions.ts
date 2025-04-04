@@ -3,7 +3,7 @@ import { useMemo } from "react";
 interface EquipmentPosition {
   equipmentId: string;
   equipmentName: string;
-  equipmentModel?: string;
+  equipmentModel: string;
   lat: number;
   lon: number;
 }
