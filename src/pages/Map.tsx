@@ -41,8 +41,6 @@ function Map() {
     history,
   } = useSelectedEquipment();
 
-  console.log(selectedState);
-
   return (
     <div className="relative w-full h-screen">
       <SearchBar
