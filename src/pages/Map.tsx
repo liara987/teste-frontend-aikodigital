@@ -1,4 +1,3 @@
-import L from "leaflet";
 import { useState } from "react";
 import {
   MapContainer,
@@ -12,26 +11,19 @@ import EquipmentHistoryPanel from "../components/EquipmentHistoryPanel";
 import MapError from "../components/MapError";
 import NoResults from "../components/NoResults";
 import SearchBar from "../components/SearchBar";
+
+import useEquipmentIcons from "../hooks/useEquipmentIcons";
 import useEquipmentStates from "../hooks/useEquipmentState";
 import useFilteredPositions from "../hooks/useFilteredPositions";
 import useLatestPositions from "../hooks/useLatestPositions";
 import useSelectedEquipment from "../hooks/useSelectedEquipment";
 
-import trunk from "../assets/caminhao.png";
-import claw from "../assets/garra.png";
-import harvester from "../assets/harvester.png";
-
 function Map() {
   const [searchQuery, setSearchQuery] = useState("");
   const [mapError, setMapError] = useState(false);
 
-  const iconMap: Record<string, string> = {
-    "Caminhão de carga": trunk,
-    Harvester: harvester,
-    "Garra traçadora": claw,
-  };
-
   const equipmentStates = useEquipmentStates();
+  const { getEquipmentIcon } = useEquipmentIcons();
   const latestPositions = useLatestPositions();
   const {
     selectedEquipment,
@@ -79,16 +71,6 @@ function Map() {
                 (eq) => eq.equipmentId === equipmentId,
               );
 
-              const iconUrl = iconMap[equipmentModel] || trunk;
-
-              const equipmentIcon = new L.Icon({
-                iconUrl,
-                iconSize: [40, 40],
-                iconAnchor: [20, 40],
-                popupAnchor: [0, -40],
-                className: "leaflet-marker-icon",
-              });
-
               return (
                 <Marker
                   key={equipmentId}
@@ -96,7 +78,7 @@ function Map() {
                   eventHandlers={{
                     click: () => setSelectedEquipment(equipmentId),
                   }}
-                  icon={equipmentIcon}
+                  icon={getEquipmentIcon(equipmentModel)}
                 >
                   <Popup closeOnClick={false}>
                     <p>
