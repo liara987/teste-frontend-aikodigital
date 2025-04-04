@@ -12,19 +12,28 @@ import MapError from "../components/MapError";
 import NoResults from "../components/NoResults";
 import SearchBar from "../components/SearchBar";
 
+import FilterPanel from "../components/FilterPanel";
+import useEquipmentFilter from "../hooks/useEquipmentFilter";
 import useEquipmentIcons from "../hooks/useEquipmentIcons";
 import useEquipmentStates from "../hooks/useEquipmentState";
-import useFilteredPositions from "../hooks/useFilteredPositions";
-import useLatestPositions from "../hooks/useLatestPositions";
 import useSelectedEquipment from "../hooks/useSelectedEquipment";
 
 function Map() {
-  const [searchQuery, setSearchQuery] = useState("");
   const [mapError, setMapError] = useState(false);
-
-  const equipmentStates = useEquipmentStates();
   const { getEquipmentIcon } = useEquipmentIcons();
-  const latestPositions = useLatestPositions();
+  const equipmentStates = useEquipmentStates();
+
+  const {
+    searchQuery,
+    setSearchQuery,
+    selectedState,
+    setSelectedState,
+    selectedModel,
+    setSelectedModel,
+    filteredPositions,
+    noResults,
+  } = useEquipmentFilter();
+
   const {
     selectedEquipment,
     setSelectedEquipment,
@@ -32,16 +41,20 @@ function Map() {
     history,
   } = useSelectedEquipment();
 
-  const { filteredPositions, noResults } = useFilteredPositions({
-    positions: latestPositions,
-    searchQuery,
-  });
+  console.log(selectedState);
 
   return (
     <div className="relative w-full h-screen">
       <SearchBar
         onSearch={(query) => setSearchQuery(query)}
         onFocus={() => setSelectedEquipment(null)}
+      />
+
+      <FilterPanel
+        selectedState={selectedState}
+        setSelectedState={setSelectedState}
+        selectedModel={selectedModel}
+        setSelectedModel={setSelectedModel}
       />
 
       {noResults && <NoResults searchQuery={searchQuery} />}
@@ -87,10 +100,11 @@ function Map() {
 
                     {lastEquipmentModel && (
                       <p>
-                        <strong className="mr-2">Modelo:</strong>
+                        <strong className="mr-2">Modelo:</strong>{" "}
                         {lastEquipmentModel.name}
                       </p>
                     )}
+
                     <p className="flex">
                       <strong className="mr-2">Estado:</strong>
                       <span
