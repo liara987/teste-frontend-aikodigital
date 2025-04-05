@@ -4,33 +4,21 @@ import {
   EquipmentModelContext,
 } from "../context/EquipmentContext";
 
+import { Equipment, PositionData } from "../types/equipmentTypes";
 import useGetPosition from "./useGetPosition";
-
-interface Position {
-  equipmentId: string;
-  lat: number;
-  lon: number;
-  date: string;
-}
-
-interface Equipment {
-  id: string;
-  name: string;
-  equipmentModelId: string;
-}
 
 interface EquipmentModel {
   id: string;
   name: string;
 }
 
-interface LatestPosition extends Position {
+interface LatestPosition extends PositionData {
   equipmentName: string;
   equipmentModel: string;
 }
 
 export default function useLatestPositions(): LatestPosition[] {
-  const positionList: Position[] = useGetPosition();
+  const positionList: PositionData[] = useGetPosition();
   const equipmentList: Equipment[] = useContext(EquipmentContext) || [];
   const equipmentModelList: EquipmentModel[] =
     useContext(EquipmentModelContext) || [];
@@ -38,7 +26,7 @@ export default function useLatestPositions(): LatestPosition[] {
   return useMemo(() => {
     if (!positionList || positionList.length === 0) return [];
 
-    const latestMap: { [key: string]: Position } = {};
+    const latestMap: { [key: string]: PositionData } = {};
 
     positionList.forEach(({ equipmentId, lat, lon, date }) => {
       const currentDate = new Date(date);

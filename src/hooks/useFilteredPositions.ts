@@ -1,12 +1,5 @@
 import { useMemo } from "react";
-
-interface EquipmentPosition {
-  equipmentId: string;
-  equipmentName: string;
-  equipmentModel: string;
-  lat: number;
-  lon: number;
-}
+import { EquipmentPosition } from "../types/equipmentTypes";
 
 interface UseFilteredPositionsProps {
   positions: EquipmentPosition[];

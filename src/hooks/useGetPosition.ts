@@ -1,12 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { EquipmentPositionHistoryContext } from "../context/EquipmentContext";
-
-interface PositionData {
-  equipmentId: string;
-  date: string;
-  lat: number;
-  lon: number;
-}
+import { PositionData } from "../types/equipmentTypes";
 
 function useGetPosition() {
   const [positionData, setPositionData] = useState<PositionData[]>([]);

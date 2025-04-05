@@ -1,15 +1,9 @@
 import { X } from "lucide-react";
-
-interface EquipmentHistoryEntry {
-  date: string;
-  time: string;
-  stateName: string;
-  stateColor: string;
-}
+import { EquipmentHistoryFormattedEntry } from "../types/equipmentTypes";
 
 interface EquipmentHistoryPanelProps {
   equipmentId: string;
-  history: EquipmentHistoryEntry[];
+  history: EquipmentHistoryFormattedEntry[];
   onClose: () => void;
 }
 

@@ -3,13 +3,7 @@ import {
   EquipmentStateContext,
   EquipmentStateHistoryContext,
 } from "../context/EquipmentContext";
-
-interface EquipmentWithState {
-  id?: string;
-  equipmentId: string;
-  stateName: string;
-  stateColor: string;
-}
+import { EquipmentWithState } from "../types/equipmentTypes";
 
 export default function useEquipmentStates() {
   const equipmentStates = useContext(EquipmentStateContext);

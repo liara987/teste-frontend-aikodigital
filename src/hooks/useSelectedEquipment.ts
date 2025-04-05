@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { EquipmentModel } from "../types/equipmentTypes";
 import useFormattedEquipmentHistory from "./useEquipmentHistory";
-import useEquipmentModel, { EquipmentModel } from "./useEquipmentModel";
+import useEquipmentModel from "./useEquipmentModel";
 
 export default function useSelectedEquipment() {
   const [selectedEquipment, setSelectedEquipment] = useState<string | null>(

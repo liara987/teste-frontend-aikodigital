@@ -3,11 +3,7 @@ import {
   EquipmentContext,
   EquipmentModelContext,
 } from "../context/EquipmentContext";
-
-export interface EquipmentModel {
-  id: string;
-  name: string;
-}
+import { EquipmentModel } from "../types/equipmentTypes";
 
 function useEquipmentModel(equipmentId: string | null): EquipmentModel | null {
   const equipmentList = useContext(EquipmentContext);

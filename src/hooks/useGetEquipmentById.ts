@@ -1,11 +1,6 @@
 import { useContext, useMemo } from "react";
 import { EquipmentContext } from "../context/EquipmentContext";
-
-export interface Equipment {
-  id: string;
-  equipmentModelId: string;
-  name: string;
-}
+import { Equipment } from "../types/equipmentTypes";
 
 function useGetEquipmentById(id: string) {
   const equipmentList = useContext(EquipmentContext);
