@@ -17,6 +17,7 @@ import useEquipmentFilter from "../hooks/useEquipmentFilter";
 import useEquipmentIcons from "../hooks/useEquipmentIcons";
 import useEquipmentStates from "../hooks/useEquipmentState";
 import useSelectedEquipment from "../hooks/useSelectedEquipment";
+import { calculateProductivity } from "../utils/calculateProductivity";
 
 function Map() {
   const [mapError, setMapError] = useState(false);
@@ -78,6 +79,7 @@ function Map() {
 
           {filteredPositions.map(
             ({ equipmentId, lat, lon, equipmentName, equipmentModel }) => {
+              const productivity = calculateProductivity(history);
               const equipmentState = equipmentStates.find(
                 (eq) => eq.equipmentId === equipmentId,
               );
@@ -93,18 +95,23 @@ function Map() {
                 >
                   <Popup closeOnClick={false}>
                     <p>
-                      <strong className="mr-3">Nome:</strong> {equipmentName}
+                      <strong className="mr-13">Nome:</strong> {equipmentName}
                     </p>
 
                     {lastEquipmentModel && (
                       <p>
-                        <strong className="mr-2">Modelo:</strong>{" "}
+                        <strong className="mr-11">Modelo:</strong>{" "}
                         {lastEquipmentModel.name}
                       </p>
                     )}
 
+                    <p>
+                      <strong className="mr-1">Produtividade:</strong>{" "}
+                      {productivity + "%"}
+                    </p>
+
                     <p className="flex">
-                      <strong className="mr-2">Estado:</strong>
+                      <strong className="mr-12">Estado:</strong>
                       <span
                         className="w-4 h-4 rounded-full mr-2"
                         style={{ backgroundColor: equipmentState?.stateColor }}
