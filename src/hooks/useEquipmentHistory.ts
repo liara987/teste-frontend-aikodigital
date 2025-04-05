@@ -4,7 +4,7 @@ import {
   EquipmentStateHistoryContext,
 } from "../context/EquipmentContext";
 
-interface EquipmentHistoryEntry {
+export interface EquipmentHistoryEntry {
   date: string;
   time: string;
   stateName: string;
