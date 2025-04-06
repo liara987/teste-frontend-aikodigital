@@ -1,4 +1,3 @@
-// useGetEquipmentById.test.tsx
 import { renderHook } from "@testing-library/react";
 import { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -6,13 +5,11 @@ import { EquipmentContext } from "../context/EquipmentContext";
 import { Equipment } from "../types/equipmentTypes";
 import useGetEquipmentById from "./useGetEquipmentById";
 
-// Mock de dados
 const mockEquipments: Equipment[] = [
   { id: "eq1", equipmentModelId: "model1", name: "Trator 1" },
   { id: "eq2", equipmentModelId: "model2", name: "Colheitadeira 2" },
 ];
 
-// Wrapper com contexto
 const createWrapper = (value: Equipment[] | null) => {
   return ({ children }: { children: ReactNode }) => (
     <EquipmentContext.Provider value={value as Equipment[]}>

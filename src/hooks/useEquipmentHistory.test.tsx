@@ -22,8 +22,6 @@ const mockEquipmentHistory = [
     ],
   },
 ];
-
-// 🧱 Wrapper com tipagem correta
 const wrapper = ({ children }: { children: ReactNode }) => {
   return (
     <EquipmentStateContext.Provider value={mockStates}>

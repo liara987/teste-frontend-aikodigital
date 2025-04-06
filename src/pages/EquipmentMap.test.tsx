@@ -3,7 +3,6 @@ import { MapContainerProps, MarkerProps, PopupProps } from "react-leaflet";
 import { describe, expect, it, vi } from "vitest";
 import EquipmentMap from "./EquipmentMap";
 
-// Mocks do Leaflet
 vi.mock("react-leaflet", () => {
   return {
     MapContainer: ({ children }: MapContainerProps) => (
@@ -21,7 +20,6 @@ vi.mock("react-leaflet", () => {
   };
 });
 
-// Mocks dos hooks
 vi.mock("../hooks/useEquipmentFilter", () => ({
   default: () => ({
     searchQuery: "",
@@ -81,7 +79,6 @@ vi.mock("../hooks/useSelectedEquipment", () => ({
   }),
 }));
 
-// ✅ Mocks dos componentes
 vi.mock("../components/EquipmentHistoryPanel", () => ({
   default: () => <div data-testid="history-panel" />,
 }));
@@ -107,7 +104,6 @@ vi.mock("../components/FilterPanel", () => ({
   default: () => <div>Filtro</div>,
 }));
 
-// ✅ Testes
 describe("EquipmentMap", () => {
   it("renderiza o mapa e os componentes de filtro e busca", () => {
     render(<EquipmentMap />);

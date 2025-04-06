@@ -27,7 +27,7 @@ describe("useEquipmentIcons", () => {
     const icon = getEquipmentIcon("Modelo Desconhecido");
 
     expect(icon).toBeInstanceOf(L.Icon);
-    expect(icon.options.iconUrl as string).toBe("mocked-trunk.png"); // Default
+    expect(icon.options.iconUrl as string).toBe("mocked-trunk.png");
   });
 
   it("define corretamente tamanho e âncoras do ícone", () => {

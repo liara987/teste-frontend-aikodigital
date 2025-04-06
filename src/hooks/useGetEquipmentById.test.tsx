@@ -1,4 +1,3 @@
-// useGetEquipmentById.test.tsx
 import { renderHook } from "@testing-library/react";
 import { ReactNode } from "react";
 import { describe, expect, it, vi } from "vitest";
@@ -7,13 +6,11 @@ import { EquipmentContext } from "../context/EquipmentContext";
 import { Equipment } from "../types/equipmentTypes";
 import useGetEquipmentById from "./useGetEquipmentById";
 
-// Mock de equipamentos
 const mockEquipmentList: Equipment[] = [
   { id: "1", name: "Trator 1", equipmentModelId: "Harvester" },
   { id: "2", name: "Caminhão 2", equipmentModelId: "Caminhão de carga" },
 ];
 
-// Wrapper de contexto
 const createWrapper = (equipmentList: Equipment[] | null) => {
   return ({ children }: { children: ReactNode }) => (
     <EquipmentContext.Provider value={equipmentList}>
@@ -43,7 +40,7 @@ describe("useGetEquipmentById", () => {
   });
 
   it("retorna null se o contexto for nulo", () => {
-    vi.spyOn(console, "error").mockImplementation(() => {}); // silencia o erro
+    vi.spyOn(console, "error").mockImplementation(() => {});
 
     const wrapper = createWrapper(null);
 
@@ -53,9 +50,9 @@ describe("useGetEquipmentById", () => {
   });
 
   it("retorna null se o contexto for inválido (não é array)", () => {
-    vi.spyOn(console, "error").mockImplementation(() => {}); // silencia o erro
+    vi.spyOn(console, "error").mockImplementation(() => {});
 
-    const wrapper = createWrapper([] as unknown as null); // simula valor inválido
+    const wrapper = createWrapper([] as unknown as null);
 
     const { result } = renderHook(() => useGetEquipmentById("1"), { wrapper });
 

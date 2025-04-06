@@ -8,7 +8,6 @@ import {
 } from "../types/equipmentTypes";
 import useGetPosition from "./useGetPosition";
 
-// Mock de dados
 const mockContextData = [
   {
     equipmentId: "equip-1",
@@ -23,7 +22,6 @@ const mockContextData = [
   },
 ];
 
-// Wrapper com o contexto
 const createWrapper = (value: EquipmentPositionHistory[] = []) => {
   return ({ children }: { children: ReactNode }) => (
     <EquipmentPositionHistoryContext.Provider value={value}>

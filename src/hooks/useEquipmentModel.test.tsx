@@ -23,7 +23,6 @@ const mockEquipmentModels: EquipmentModel[] = [
   },
 ];
 
-// Wrapper para fornecer os contextos
 const wrapper =
   (equipmentList: Equipment[] | null, modelList: EquipmentModel[] | null) =>
   ({ children }: { children: React.ReactNode }) => (

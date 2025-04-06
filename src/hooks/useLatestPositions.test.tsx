@@ -12,12 +12,10 @@ import {
 import useGetPosition from "./useGetPosition";
 import useLatestPositions from "./useLatestPositions";
 
-// Mocks
 vi.mock("./useGetPosition", () => ({
   default: vi.fn(),
 }));
 
-// Dados de teste
 const mockEquipments: Equipment[] = [
   { id: "eq1", equipmentModelId: "model1", name: "Caminhão Alpha" },
   { id: "eq2", equipmentModelId: "model2", name: "Garra Beta" },
@@ -28,7 +26,6 @@ const mockModels: EquipmentModel[] = [
   { id: "model2", name: "Garra", hourlyEarnings: [] },
 ];
 
-// Wrapper com contextos
 const wrapper = ({ children }: { children: React.ReactNode }) => (
   <EquipmentContext.Provider value={mockEquipments}>
     <EquipmentModelContext.Provider value={mockModels}>
@@ -60,7 +57,7 @@ describe("useLatestPositions", () => {
       },
       {
         equipmentId: "eq1",
-        date: "2023-01-01T12:00:00Z", // mais recente
+        date: "2023-01-01T12:00:00Z",
         lat: 2,
         lon: 2,
       },
