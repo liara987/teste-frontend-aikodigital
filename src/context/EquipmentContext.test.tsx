@@ -10,6 +10,8 @@ function EquipmentConsumer() {
   const equipments = React.useContext(EquipmentContext);
   const models = React.useContext(EquipmentModelContext);
 
+  if (!equipments || !models) return;
+
   return (
     <div>
       <p data-testid="equipment-count">Equipamentos: {equipments.length}</p>
