@@ -44,17 +44,21 @@ function EquipmentMap() {
 
   return (
     <div className="relative w-full h-screen">
-      <SearchBar
-        onSearch={(query) => setSearchQuery(query)}
-        onFocus={() => setSelectedEquipment(null)}
-      />
+      {!mapError && (
+        <SearchBar
+          onSearch={(query) => setSearchQuery(query)}
+          onFocus={() => setSelectedEquipment(null)}
+        />
+      )}
 
-      <FilterPanel
-        selectedState={selectedState}
-        setSelectedState={setSelectedState}
-        selectedModel={selectedModel}
-        setSelectedModel={setSelectedModel}
-      />
+      {!mapError && (
+        <FilterPanel
+          selectedState={selectedState}
+          setSelectedState={setSelectedState}
+          selectedModel={selectedModel}
+          setSelectedModel={setSelectedModel}
+        />
+      )}
 
       {noResults && <NoResults searchQuery={searchQuery} />}
 
