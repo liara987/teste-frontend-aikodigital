@@ -19,7 +19,7 @@ import useEquipmentStates from "../hooks/useEquipmentState";
 import useSelectedEquipment from "../hooks/useSelectedEquipment";
 import { calculateProductivity } from "../utils/calculateProductivity";
 
-function Map() {
+function EquipmentMap() {
   const [mapError, setMapError] = useState(false);
   const { getEquipmentIcon } = useEquipmentIcons();
   const equipmentStates = useEquipmentStates();
@@ -63,7 +63,7 @@ function Map() {
       ) : (
         <MapContainer
           center={[-19.126536, -45.947756]}
-          zoom={13}
+          zoom={11}
           scrollWheelZoom={false}
           zoomControl={false}
           className="w-full h-full z-0"
@@ -76,7 +76,6 @@ function Map() {
             }}
           />
           <ZoomControl position="bottomright" />
-
           {filteredPositions.map(
             ({ equipmentId, lat, lon, equipmentName, equipmentModel }) => {
               const productivity = calculateProductivity(history);
@@ -137,4 +136,4 @@ function Map() {
   );
 }
 
-export default Map;
+export default EquipmentMap;

@@ -1,11 +1,11 @@
 import "leaflet/dist/leaflet.css";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import Map from "./pages/Map.tsx";
+import EquipmentMap from "./pages/EquipmentMap.tsx";
 import "./styles/index.css";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Map />
+    <EquipmentMap />
   </StrictMode>,
 );
