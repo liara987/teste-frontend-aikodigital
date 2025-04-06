@@ -20,13 +20,15 @@ function useFormattedEquipmentHistory(
   return useMemo(() => {
     if (!selectedEquipment) return [];
 
-    const historyEntry = equipmentHistory.find(
+    const historyEntry = equipmentHistory?.find(
       (entry) => entry.equipmentId === selectedEquipment,
     );
 
     if (!historyEntry) return [];
 
-    const stateMap = new Map(equipmentStates.map((state) => [state.id, state]));
+    const stateMap = new Map(
+      equipmentStates?.map((state) => [state.id, state]),
+    );
 
     return historyEntry.states
       .map(({ date, equipmentStateId }) => {

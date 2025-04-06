@@ -12,11 +12,11 @@ function useEquipmentModel(equipmentId: string | null): EquipmentModel | null {
   return useMemo(() => {
     if (!equipmentId) return null;
 
-    const equipment = equipmentList.find((eq) => eq.id === equipmentId);
+    const equipment = equipmentList?.find((eq) => eq.id === equipmentId);
     if (!equipment) return null;
 
     return (
-      equipmentModels.find(
+      equipmentModels?.find(
         (model) => model.id === equipment.equipmentModelId,
       ) || null
     );

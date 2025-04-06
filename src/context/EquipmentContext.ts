@@ -12,14 +12,18 @@ import {
   EquipmentStateHistory,
 } from "../types/equipmentTypes";
 
-export const EquipmentContext = createContext<Equipment[]>(equipment);
-export const EquipmentStateContext =
-  createContext<EquipmentState[]>(equipmentState);
+export const EquipmentContext = createContext<Equipment[] | null>(
+  equipment || null,
+);
+export const EquipmentStateContext = createContext<EquipmentState[] | null>(
+  equipmentState || null,
+);
 export const EquipmentStateHistoryContext = createContext<
-  EquipmentStateHistory[]
->(equipmentStateHistory);
-export const EquipmentModelContext =
-  createContext<EquipmentModel[]>(equipmentModel);
+  EquipmentStateHistory[] | null
+>(equipmentStateHistory || null);
+export const EquipmentModelContext = createContext<EquipmentModel[] | null>(
+  equipmentModel || null,
+);
 export const EquipmentPositionHistoryContext = createContext<
-  EquipmentPositionHistory[]
->(equipmentPositionHistory);
+  EquipmentPositionHistory[] | null
+>(equipmentPositionHistory || null);

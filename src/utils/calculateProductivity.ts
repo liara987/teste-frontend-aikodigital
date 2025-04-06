@@ -1,7 +1,7 @@
 type HistoryEntry = {
-  date: string; // Ex: "28/02/2021"
-  time: string; // Ex: "17:00"
-  stateName: string; // Ex: "Operando"
+  date: string;
+  time: string;
+  stateName: string;
   stateColor: string;
 };
 
