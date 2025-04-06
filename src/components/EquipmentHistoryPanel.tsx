@@ -1,4 +1,5 @@
 import { X } from "lucide-react";
+import aikoLogoImg from "../assets/aiko.png";
 import { EquipmentHistoryFormattedEntry } from "../types/equipmentTypes";
 
 interface EquipmentHistoryPanelProps {
@@ -19,9 +20,12 @@ export default function EquipmentHistoryPanel({
         md:top-0 md:left-0 md:w-[40%] md:h-full md:border-r md:rounded-none"
     >
       <div className="flex justify-between items-center mb-2">
-        <h2 className="text-gray-800 text-lg font-bold">
-          Histórico do Equipamento
-        </h2>
+        <div className="flex justify-between items-center">
+          <img className="w-20 mr-5" src={aikoLogoImg} alt="Aiko logo" />
+          <h2 className="text-gray-800 text-lg font-bold">
+            Histórico do Equipamento
+          </h2>
+        </div>
         <button
           onClick={onClose}
           className="text-gray-600 hover:text-gray-900 hover:cursor-pointer"
