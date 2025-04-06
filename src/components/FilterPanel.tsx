@@ -25,6 +25,7 @@ const FilterPanel: React.FC<FilterPanelProps> = ({
         className={`absolute top-12 left-0 bg-white p-3 shadow-lg rounded-lg w-64 border border-gray-300 transition-opacity animate-fade-in 
           ${showFilters ? "block" : "hidden"} sm:block`}
       >
+        <h3 className="text-gray-700">Filtro</h3>
         <SelectInput
           label="Estado"
           value={selectedState}
